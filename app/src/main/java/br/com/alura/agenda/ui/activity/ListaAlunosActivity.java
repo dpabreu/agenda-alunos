@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.alura.agenda.R;
+import br.com.alura.agenda.dao.AlunoDao;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
@@ -17,6 +18,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
+
+        AlunoDao dao = new AlunoDao();
+
         setTitle("Lista de alunos");
         List<String> alunos = new ArrayList<>(Arrays.asList("Daniel", "Emily", "Alice"));
 
@@ -24,6 +28,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
         listaDeAlunos.setAdapter(new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                alunos));
+                dao.todos()));
     }
 }
